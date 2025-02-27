@@ -3,6 +3,7 @@ import discord
 from utils.service.llm_worker import LLMWorker
 from utils.service.openapi_driver import OpenAIDriver
 from utils.logging_worker.logging_worker import setting_up_logging
+from utils.recording_worker.recording_worker import setting_up_recording
 
 from cogs.cogs import cogs_setup
 
@@ -21,6 +22,7 @@ class JannyAIBot(discord.Bot):
 
     def __init__(self):
         setting_up_logging()
+        setting_up_recording()
         super().__init__(intents=discord.Intents.all())
         self.llm_worker = LLMWorker(OpenAIDriver())
         cogs_setup(self)
